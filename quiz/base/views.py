@@ -1,9 +1,14 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from quiz.base.forms import AlunoForm
 from quiz.base.models import Pergunta
 
 
 def home(requisicao):
+    if requisicao.method == 'POST':
+        formulario = AlunoForm(requisicao.POST)
+        if formulario.is_valid():
+            aluno = formulario.save()
+            return redirect('/perguntas/1')
     return render(requisicao, 'base/home.html')
 
 
