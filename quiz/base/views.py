@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
+
 def home(requisicao):
-    pass
+    return HttpResponse('ola MUndo')
 
